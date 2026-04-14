@@ -22,11 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.display = isRo ? 'none' : '';
         });
 
-        // Update Button States (Desktop)
-        const btnRo = document.getElementById('btn-ro');
-        const btnEn = document.getElementById('btn-en');
-        if (btnRo) btnRo.classList.toggle('active', isRo);
-        if (btnEn) btnEn.classList.toggle('active', !isRo);
+        // Update Button States (Desktop & Mobile Segmented Controls)
+        const langToggles = document.querySelectorAll('.ios-segmented-control');
+        langToggles.forEach(toggle => {
+            if (isRo) {
+                toggle.classList.remove('en-active');
+                toggle.querySelector('button:nth-of-type(1)').classList.add('active');
+                toggle.querySelector('button:nth-of-type(2)').classList.remove('active');
+            } else {
+                toggle.classList.add('en-active');
+                toggle.querySelector('button:nth-of-type(1)').classList.remove('active');
+                toggle.querySelector('button:nth-of-type(2)').classList.add('active');
+            }
+        });
     }
 
     // Expose to window for inline onclick handlers
