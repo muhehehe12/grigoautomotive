@@ -58,16 +58,18 @@
                 <a href="#contact" class="nav-cta" data-en style="display:none">Book Now</a>
 
                 <!-- Language Toggle inside Mobile Menu too -->
-                <div class="lang-toggle-mobile">
-                   <button onclick="setLang('ro')">RO</button> | <button onclick="setLang('en')">EN</button>
+                <div class="ios-segmented-control lang-toggle-mobile" id="langToggleMobile">
+                    <div class="ios-segment-bg"></div>
+                    <button class="ios-segment active" id="btn-ro-mob" onclick="setLang('ro')">RO</button>
+                    <button class="ios-segment" id="btn-en-mob" onclick="setLang('en')">EN</button>
                 </div>
             </nav>
 
             <div class="nav-extras">
-                <div class="lang-toggle desktop-only">
-                    <button class="active" id="btn-ro" onclick="setLang('ro')">RO</button>
-                    <span>/</span>
-                    <button id="btn-en" onclick="setLang('en')">EN</button>
+                <div class="ios-segmented-control desktop-only" id="langToggle">
+                    <div class="ios-segment-bg"></div>
+                    <button class="ios-segment active" id="btn-ro" onclick="setLang('ro')">RO</button>
+                    <button class="ios-segment" id="btn-en" onclick="setLang('en')">EN</button>
                 </div>
                 <div class="menu-toggle" id="menu-toggle">
                     <span></span><span></span><span></span>
@@ -98,8 +100,8 @@
             
             <div class="hero-actions reveal" style="transition-delay: 0.3s">
                 <a href="tel:0726464405" class="btn btn-primary">
-                    <span data-ro>📞 Contact Rapid</span>
-                    <span data-en style="display:none">📞 Quick Contact</span>
+                    <span data-ro><img src="https://emojicdn.elk.sh/📞?style=apple" alt="📞" class="ios-emoji-inline"> Contact Rapid</span>
+                    <span data-en style="display:none"><img src="https://emojicdn.elk.sh/📞?style=apple" alt="📞" class="ios-emoji-inline"> Quick Contact</span>
                 </a>
                 <a href="#services" class="btn btn-secondary">
                     <span data-ro>Explorează Serviciile</span>
@@ -121,8 +123,8 @@
         </div>
     </section>
 
-    <!-- ABOUT / WHY US -->
-    <section id="about" class="section-padding">
+    <!-- ABOUT / SERVICES -->
+    <section id="services" class="section-padding">
         <div class="container">
             <div class="section-header">
                 <span class="section-label" data-ro>Promisiunea Noastră</span>
@@ -135,19 +137,19 @@
             
             <div class="services-grid">
                 <div class="service-card reveal">
-                    <div class="service-icon">💎</div>
+                    <div class="service-icon"><img src="https://emojicdn.elk.sh/💎?style=apple" alt="💎" class="ios-emoji"></div>
                     <h3><span data-ro>Standarde de Showroom</span><span data-en style="display:none">Showroom Standards</span></h3>
                     <p><span data-ro>Un atelier de o curățenie exemplară, unde fiecare mașină este tratată cu respectul cuvenit unei piese de colecție.</span><span data-en style="display:none">An impeccably clean workshop, where every car is treated with the respect due to a collector's item.</span></p>
                 </div>
                 
                 <div class="service-card reveal" style="transition-delay: 0.1s">
-                    <div class="service-icon">🔍</div>
+                    <div class="service-icon"><img src="https://emojicdn.elk.sh/🔍?style=apple" alt="🔍" class="ios-emoji"></div>
                     <h3><span data-ro>Diagnoză de Precizie</span><span data-en style="display:none">Precision Diagnostics</span></h3>
                     <p><span data-ro>Utilizăm cele mai noi tehnologii computerizate pentru a identifica și rezolva problemele rapid, economisind timpul și banii tai.</span><span data-en style="display:none">We use the latest computer technologies to identify and solve problems quickly, saving you time and money.</span></p>
                 </div>
 
                 <div class="service-card reveal" style="transition-delay: 0.2s">
-                    <div class="service-icon">🤝</div>
+                    <div class="service-icon"><img src="https://emojicdn.elk.sh/🤝?style=apple" alt="🤝" class="ios-emoji"></div>
                     <h3><span data-ro>Transparență 100%</span><span data-en style="display:none">100% Transparency</span></h3>
                     <p><span data-ro>Fără costuri ascunse. Primești explicații clare, dovezi foto ale defectelor și o factură onestă de fiecare dată.</span><span data-en style="display:none">No hidden costs. You receive clear explanations, photo evidence of defects, and an honest invoice every time.</span></p>
                 </div>
@@ -291,21 +293,21 @@
                     
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon">📍</div>
+                            <div class="contact-icon"><img src="https://emojicdn.elk.sh/📍?style=apple" alt="📍" class="ios-emoji"></div>
                             <div class="contact-text">
                                 <h4 data-ro>Adresă</h4><h4 data-en style="display:none">Address</h4>
                                 <p>Splaiul Unirii, Sector 3, București</p>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">📞</div>
+                            <div class="contact-icon"><img src="https://emojicdn.elk.sh/📞?style=apple" alt="📞" class="ios-emoji"></div>
                             <div class="contact-text">
                                 <h4 data-ro>Telefon</h4><h4 data-en style="display:none">Phone</h4>
                                 <a href="tel:0726464405">0726 464 405</a>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">⏰</div>
+                            <div class="contact-icon"><img src="https://emojicdn.elk.sh/⏰?style=apple" alt="⏰" class="ios-emoji"></div>
                             <div class="contact-text">
                                 <h4 data-ro>Program</h4><h4 data-en style="display:none">Hours</h4>
                                 <p>Luni - Vineri: 09:00 - 18:00</p>
@@ -371,8 +373,8 @@
 
     <!-- MOBILE STICKY CALL -->
     <a href="tel:0726464405" class="mobile-cta desktop-hidden">
-        <span data-ro>📞 Sună Acum pentru Programare</span>
-        <span data-en style="display:none">📞 Call Now for Booking</span>
+        <span data-ro><img src="https://emojicdn.elk.sh/📞?style=apple" alt="📞" class="ios-emoji-inline"> Sună Acum pentru Programare</span>
+        <span data-en style="display:none"><img src="https://emojicdn.elk.sh/📞?style=apple" alt="📞" class="ios-emoji-inline"> Call Now for Booking</span>
     </a>
 
     <script src="script.js"></script>
