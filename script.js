@@ -47,14 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks   = document.getElementById('nav-links');
 
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
-            // Animate toggle lines if needed (handled in CSS mostly, but logic here)
         });
 
         // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
@@ -62,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             }
         });
