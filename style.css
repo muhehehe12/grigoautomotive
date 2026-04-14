@@ -52,6 +52,13 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    width: 100%;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 .container {
@@ -757,12 +764,14 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .navbar { height: 70px; }
+    .navbar { height: 60px; }
+    .nav-content { padding: 0 15px; }
+    
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 85%;
+        width: 80%;
         height: 100vh;
         background: rgba(5, 5, 5, 0.98);
         backdrop-filter: blur(20px);
@@ -770,25 +779,46 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 30px;
+        gap: 25px;
         transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         z-index: 1050;
         padding: 40px;
     }
     
-    .logo { font-size: 1.1rem; gap: 6px; }
-    .logo .dim { font-size: 0.75rem; }
+    .nav-links.active { right: 0; }
+    .menu-toggle { display: flex; }
+
+    .desktop-hidden { display: flex !important; }
+    .desktop-only { display: none !important; }
+    .lang-toggle-mobile { display: inline-flex !important; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-top { grid-template-columns: 1fr; gap: 40px; }
     
-    .hero h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 20px; }
-    .hero p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
+    .logo { font-size: 1.05rem; gap: 6px; }
+    .logo .dim { font-size: 0.7rem; }
     
-    .section-padding { padding: 60px 0; }
-    .section-header { margin-bottom: 40px; }
+    .hero h1 { font-size: 2.2rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+    .hero p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 30px; }
+    .hero-actions { flex-direction: column; gap: 15px; }
+
+    .section-padding { padding: 50px 0; }
+    .section-header { margin-bottom: 35px; }
+    .section-header h2 { font-size: 1.9rem; }
     
-    .btn { width: 100%; justify-content: center; padding: 15px 25px; font-size: 0.95rem; }
+    .btn { width: 100%; justify-content: center; padding: 14px 22px; font-size: 0.95rem; }
     
     .menu-toggle span { background: var(--white); }
     
-    .mobile-cta { padding: 15px; font-size: 0.95rem; }
+    .mobile-cta { padding: 14px; font-size: 0.9rem; border-radius: 100px; }
     .mobile-cta:active { transform: scale(0.96); }
+
+    /* Brands & Process for Mobile */
+    .brands-section { padding: 30px 0; }
+    .brands-container { gap: 15px 25px; justify-content: center; }
+    .brand-item { font-size: 0.65rem; }
+    
+    .process-grid { grid-template-columns: 1fr; gap: 25px; }
+    .process-item h3 { font-size: 1rem; }
+    .process-item p { font-size: 0.85rem; }
 }
