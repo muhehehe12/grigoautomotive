@@ -81,6 +81,10 @@ em { font-style: normal; color: var(--accent); }
 .bg-dark { background: var(--bg-deep); }
 .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 
+.desktop-hidden { display: none !important; }
+.desktop-only { display: inline-flex !important; }
+.lang-toggle-mobile { display: none !important; }
+
 /* ══════════════════════════════
    NAVIGATION
    ══════════════════════════════ */
@@ -154,16 +158,22 @@ em { font-style: normal; color: var(--accent); }
     background: var(--accent);
     color: var(--white);
     padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: 700;
+    border-radius: 100px;
+    font-weight: 600;
     font-size: 0.85rem;
-    box-shadow: 0 4px 15px var(--accent-glow);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", var(--font-body);
+    box-shadow: 0 4px 10px var(--accent-glow);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nav-cta:hover {
     background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--accent-glow);
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px var(--accent-glow);
+}
+
+.nav-cta:active {
+    transform: scale(0.97);
 }
 
 .menu-toggle {
@@ -258,39 +268,48 @@ em { font-style: normal; color: var(--accent); }
 }
 
 .btn {
-    padding: 16px 36px;
-    border-radius: 4px;
-    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-weight: 600;
     font-size: 1rem;
-    transition: var(--transition);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", var(--font-body);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    letter-spacing: 0.2px;
 }
 
 .btn-primary {
     background: var(--accent);
     color: var(--white);
+    box-shadow: 0 4px 14px 0 var(--accent-glow);
 }
 
 .btn-secondary {
-    background: transparent;
-    border: 1px solid var(--border-light);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--white);
 }
 
 .btn:hover {
-    transform: translateY(-3px);
+    transform: scale(1.02);
+}
+
+.btn-primary:active, .btn-secondary:active {
+    transform: scale(0.97);
 }
 
 .btn-primary:hover {
     background: var(--accent-dark);
-    box-shadow: 0 10px 25px var(--accent-glow);
+    box-shadow: 0 6px 20px var(--accent-glow);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ══════════════════════════════
@@ -406,7 +425,7 @@ em { font-style: normal; color: var(--accent); }
    ══════════════════════════════ */
 .process-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     position: relative;
 }
@@ -615,6 +634,96 @@ footer {
 }
 
 /* ══════════════════════════════
+   IOS EMOJI LOGIC
+   ══════════════════════════════ */
+.ios-emoji {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.1em;
+    display: inline-block;
+}
+
+.ios-emoji-inline {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: -0.25em;
+    display: inline-block;
+}
+
+.service-icon .ios-emoji {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 4px 10px rgba(255,255,255,0.1));
+}
+
+.contact-icon .ios-emoji {
+    width: 32px;
+    height: 32px;
+}
+
+/* ══════════════════════════════
+   IOS SEGMENTED CONTROL (LANG TOGGLE)
+   ══════════════════════════════ */
+.ios-segmented-control {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 100px;
+    padding: 3px;
+    width: 110px;
+    height: 38px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ios-segment-bg {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: calc(50% - 3px);
+    height: calc(100% - 6px);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.ios-segmented-control.en-active .ios-segment-bg {
+    transform: translateX(100%);
+}
+
+.ios-segment {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", var(--font-body);
+}
+
+.ios-segment.active {
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.lang-toggle-mobile.ios-segmented-control {
+    margin-top: 20px;
+    width: 140px;
+    height: 44px;
+}
+.lang-toggle-mobile .ios-segment {
+    font-size: 0.95rem;
+}
+
+/* ══════════════════════════════
    MOBILE STYLES
    ══════════════════════════════ */
 @media (max-width: 1024px) {
@@ -637,10 +746,33 @@ footer {
         z-index: 1050;
     }
     
-    .nav-links.active { right: 0; }
+    .lang-toggle.active { right: 0; }
     .menu-toggle { display: flex; }
     
+    .desktop-hidden { display: flex !important; }
+    .desktop-only { display: none !important; }
+    .lang-toggle-mobile { display: inline-flex !important; }
+    
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    
+    /* Brands Mobile Optimization */
+    .brands-section { padding: 30px 0; }
+    .brands-container { 
+        gap: 15px 25px; 
+        justify-content: center; 
+        opacity: 0.9; 
+        filter: grayscale(0.5); 
+    }
+    .brand-item { 
+        font-size: 0.7rem; 
+        letter-spacing: 1px; 
+    }
+    
+    /* Process Section Mobile Optimization */
+    .process-grid { 
+        grid-template-columns: 1fr; 
+        gap: 30px; 
+    }
     .footer-top { grid-template-columns: 1fr; gap: 40px; }
     
     .hero h1 { font-size: 3.5rem; }
@@ -661,8 +793,15 @@ footer {
         align-items: center;
         justify-content: center;
         padding: 18px;
-        border-radius: 12px;
-        font-weight: 800;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-radius: 100px;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro", var(--font-body);
+        font-weight: 600;
+        font-size: 1.05rem;
+        letter-spacing: 0.3px;
+        box-shadow: 0 10px 30px rgba(0, 163, 255, 0.5);
+        transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .mobile-cta:active {
+        transform: scale(0.96);
     }
 }
