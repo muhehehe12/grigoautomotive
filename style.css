@@ -11,9 +11,9 @@
     --bg-card:      #121212;
     --bg-glass:     rgba(18, 18, 18, 0.75);
     
-    --accent:       #00a3ff; /* Electric Blue */
-    --accent-glow:  rgba(0, 163, 255, 0.3);
-    --accent-dark:  #0077c2;
+    --accent:       #e60000; /* Racing Red */
+    --accent-glow:  rgba(230, 0, 0, 0.3);
+    --accent-dark:  #b30000;
     
     --white:        #ffffff;
     --text-main:    #e0e0e0;
